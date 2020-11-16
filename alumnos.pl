@@ -1,6 +1,6 @@
-es(sofia, alumna).
-es(gabriel, alumno).
-es(pedro, alumno).
+es(sofia,alumno).
+es(gabriel,alumno).
+es(pedro,alumno).
 es(veronica,profesor).
 es(miguel,profesor).
 es(luis,profesor).
@@ -23,14 +23,14 @@ toma(gabriel,fis).
 toma(pedro,edd).
 toma(gabriel,edd).
 toma(enrique,fisica).
-
 toma(X, fisica):- es(X, alumno), toma(X, calculo).
-toma(X, calculo), toma(X, matematicas):- es(X, alumno), toma(X, fis).
+toma(X, fis):- toma(X, calculo), toma(X, matematicas).
 toma(X, io):- es(X, alumno).
-not (toma(X, programacion)), toma(X, algebra):- es(X, alumno), toma(X, etica).
-toma(X, edd) ; toma(X, prolog):- es(X, alumno).
-
-r1:- toma(X, matematicas).
+not(toma(X, programacion)), toma(X, algebra):- es(X, alumno), toma(X, etica).
+toma(X, edd); toma(X, prolog):- es(X, alumno).
+r1:- toma(X, matematicas), write(X).
 r2:- es(X, alumno), toma(X, programacion), toma(X, algebra),write(X).
 r3:- es(X,profesor), imparte(X,Y), toma(gabriel, Y), write(X).
-r4:- es(W,alumno), es(X, alumno), es(Y, alumno), toma(W,Z), toma(X,Z), toma(Y,Z), write(Z).
+r4:- toma(sofia,X), toma(gabriel,X), toma(pedro,X), write(X).
+r5:- toma(X,Y), write(X), write(' Toma '), write(Y).
+r6:- es(X, profesor), imparte(X,Y), toma(Z,Y), write(X), write(' Tiene como alumno en '), write(Y), write(' a '), write(Z).
