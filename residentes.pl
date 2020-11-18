@@ -21,21 +21,21 @@ es(juan, cirujano).
 es(juan, hombre).
 es(alicia, enfermera).
 es(alicia, mujer).
-es(camilo, hombre).
 es(camilo, enfermero).
-es(camilo, misogino).
 es(luisa, mujer).
 es(luisa, jefe).
-es(luisa, feminista).
-es(X, jefe):- es(X,residente), gusta(X, pediatria).
-es(X,nazi):- es(X, jefe).
-come(X, enfermero):- es(X,cirujano).
-trabaja(alicia, X):- es(X, residente).
-trabaja(juan, X):- es(X, residente), gusta(X, traumatologia).
-trabaja(vanesa, X):- es(X, residente), gusta(X, traumatologia), gusta(X, neurocirugia).
-trabaja(X, luisa):- es(X, residente), gusta(X, neurocirugia).
-r1:- es(X, residente), write(X).
-r2:- es(X, nazi), write(X).
-r3:- es(X, jefe), write(X).
-r4:- trabaja(X, luisa), write(X).
-r5:- trabaja(X, Y), write(X), write(' Trabaja con '), write(Y).
+
+podria_ser(X, jefe):-es(X,residente), gusta(X, pediatria).
+es(X,nazi):-es(X, jefe).
+come(X, enfermero):-es(X,cirujano).
+trabaja_con(X, alicia):-es(X, residente).
+trabaja_con(X, camilo):-es(X, hombre).
+trabaja_con(juan, X):-es(X, residente), gusta(X, traumatologia).
+trabaja_con(X, vanesa):-es(X, residente), gusta(X, traumatologia) ; gusta(X, neurocirugia).
+trabaja_con(X, luisa):-es(X, mujer), es(X, residente), es(X, cirujano), gusta(X, neurocirugia).
+
+r1:- es(X, residente), write(X), write(' es residente'),nl, fail.
+r2:- es(X, nazi), write(X), write(' es nazi'),nl, fail.
+r3:- podria_ser(X, jefe), write(X), write(' podria ser jefe'),nl, fail.
+r4:- trabaja_con(X, luisa), write('Luisa trabaja con '),write(X),nl, fail.
+r5:- trabaja_con(X, Y), write(Y), write(' Trabaja con '), write(X),nl, fail.
