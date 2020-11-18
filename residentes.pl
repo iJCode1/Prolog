@@ -27,3 +27,10 @@ es(camilo, misogino).
 es(luisa, mujer).
 es(luisa, jefe).
 es(luisa, feminista).
+es(X, jefe):- es(X,residente), gusta(X, pediatria).
+es(X,nazi):- es(X, jefe).
+come(X, enfermero):- es(X,cirujano).
+trabaja(alicia, X):- es(X, residente).
+trabaja(juan, X):- es(X, residente), gusta(X, traumatologia).
+trabaja(vanesa, X):- es(X, residente), gusta(X, traumatologia), gusta(X, neurocirugia).
+trabaja(luisa, X):- es(X, residente), gusta(X, neurocirugia).
