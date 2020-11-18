@@ -33,9 +33,9 @@ come(X, enfermero):- es(X,cirujano).
 trabaja(alicia, X):- es(X, residente).
 trabaja(juan, X):- es(X, residente), gusta(X, traumatologia).
 trabaja(vanesa, X):- es(X, residente), gusta(X, traumatologia), gusta(X, neurocirugia).
-trabaja(luisa, X):- es(X, residente), gusta(X, neurocirugia).
+trabaja(X, luisa):- es(X, residente), gusta(X, neurocirugia).
 r1:- es(X, residente), write(X).
 r2:- es(X, nazi), write(X).
 r3:- es(X, jefe), write(X).
-r4:- trabaja(X, luisa).
+r4:- trabaja(X, luisa), write(X).
 r5:- trabaja(X, Y), write(X), write(' Trabaja con '), write(Y).
